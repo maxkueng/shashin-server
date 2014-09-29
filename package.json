@@ -1,14 +1,23 @@
 {
   "name": "screenshot-server",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maxkueng/shashin-server.git"
+  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Max Kueng <me@maxkueng.com> (http://maxkueng.com/)",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/maxkueng/shashin-server/raw/master/LICENSE"
+    }
+  ],
   "dependencies": {
     "domready": "^1.0.7",
     "gm": "^1.16.0",
