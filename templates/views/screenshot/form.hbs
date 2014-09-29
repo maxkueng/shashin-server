@@ -1,0 +1,88 @@
+<form id="form" class="form-horizontal" role="form">
+
+	<div v-show="hasErrors" class="row">
+		<div class="col-md-12">
+			<div class="alert alert-warning" role="alert">Make sure you fill all the required fields with a valid value.</div>
+		</div>
+	</div>
+
+	<div v-show="!hasErrors" class="row">
+		<div class="col-md-12">
+			<h3>Screenshot URL</h3>
+			<pre style="background-color: #222; color: #fff; border: none; padding: 1em; font-weight: bold;"><code v-html="screenshotUrl" id="screenshot-url"></code></pre>
+		</div>
+	</div>
+
+	<div class="form-group required">
+		<label for="input-url" class="col-sm-2 control-label">URL</label>
+		<div class="col-sm-6">
+			<input v-model="url" v-required="url" type="text" class="form-control" id="input-url" placeholder="e.g. example.com" />
+			<span class="help-block"><span class="label" v-class="label-info: !validation.url, label-warning: validation.url">Required</span> Any domain name or full URL. No need to type "http://" unless you want to, or when you need "https://".</span>
+		</div>
+	</div>
+
+	<div class="form-group required">
+		<label for="input-resolution" class="col-sm-2 control-label">Resolution</label>
+		<div class="col-sm-6">
+			<input v-model="resolution" v-required-viewport="resolution" type="text" class="form-control" id="input-resolution" placeholder="e.g. 1024x768" />
+			<span class="help-block"><span class="label" v-class="label-info: !validation.resolution, label-warning: validation.resolution">Required</span> This is the size of the viewport. Use a device name like "nexus 5" or "iphone 5", or a width and a height like "1024x768".</span>
+			<div v-show="isDeviceResolution" class="radio">
+				<label>
+					<input type="radio" name="deviceorientation" value="" v-model="deviceOrientation" > Default
+				</label>
+				<label>
+					<input type="radio" name="deviceorientation" value="portrait" v-model="deviceOrientation" > Portrait
+				</label>
+				<label>
+					<input type="radio" name="deviceorientation" value="landscape" v-model="deviceOrientation" > Landscape
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="input-size" class="col-sm-2 control-label">Resize</label>
+		<div class="col-sm-6">
+			<input v-model="size" v-optional-size="size" type="text" class="form-control" id="input-size" placeholder="e.g. 400x300" />
+			<span class="help-block"><span v-show="validation.size" class="label label-warning">Must be valid size</span> Resize the screenshot to a specific width and height.</span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="input-selector" class="col-sm-2 control-label">Selector</label>
+		<div class="col-sm-6">
+			<input v-model="selector" type="text" class="form-control" id="input-selector" placeholder="A CSS selctor" />
+			<span class="help-block">Provide a CSS selector if only a specific element of the page should be captured.</span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="input-delay" class="col-sm-2 control-label">Delay</label>
+		<div class="col-sm-6">
+			<input v-model="delay" v-optional-numeric="delay" class="form-control" id="input-delay" placeholder="seconds" />
+			<span class="help-block"><span v-show="validation.delay" class="label label-warning">Must be a positive number</span> Delay in seconds before taking the screenshot after the page has fully loaded.</span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-6">
+			<div class="checkbox">
+				<label for="input-crop">
+					<input v-model="crop" type="checkbox" id="input-crop" value="1"> Crop
+				</label>
+			</div>
+			<span class="help-block">If enabled the screenshot will be cropped to the viewport size. Otherwise the screenshot will include the entire page content.</span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-6">
+			<div class="checkbox">
+				<label for="input-skipcache">
+					<input v-model="skipCache" type="checkbox" id="input-skipcache" value="1"> Skip cache
+				</label>
+			</div>
+			<span class="help-block">Whether to skip the cache.</span>
+		</div>
+	</div>
+</form>
