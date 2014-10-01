@@ -87,7 +87,7 @@ domready(function () {
 				var values = {};
 
 				var resolution = this.resolution;
-				if (this.deviceOrientation) {
+				if (this.isDeviceResolution && this.deviceOrientation) {
 					resolution += '@' + this.deviceOrientation;
 				}
 
