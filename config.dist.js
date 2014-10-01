@@ -10,6 +10,7 @@ exports.server = {
 };
 
 exports.screenshot = {
+	useImageMagick: false, // use GraphicsMagick
 	cacheDir: path.join(exports.cacheDir, 'screenshots'),
 	cacheTTL: exports.cacheTTL
 };
