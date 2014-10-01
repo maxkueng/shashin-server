@@ -11,7 +11,7 @@ Vue.directive('required', function (value) {
 });
 
 Vue.directive('required-viewport', function (value) {
-	var nv = value.trim();
+	var nv = value.trim().toLowerCase();
 	var ok = false;
 
 	if (/^\d+x\d+$/i.test(nv) || viewports.get(nv)) {
@@ -68,7 +68,7 @@ domready(function () {
 
 		computed: {
 			isDeviceResolution: function () {
-				return (viewports.get(this.resolution.trim()) !== null);
+				return (viewports.get(this.resolution.trim().toLowerCase()) !== null);
 			},
 
 			hasErrors : function () {
@@ -108,7 +108,7 @@ domready(function () {
 				};
 
 				return url.format(urlObj);
-			}	
+			}
 		}
 	});
 
