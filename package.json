@@ -25,7 +25,7 @@
     "hapi": "^6.8.1",
     "mkdirp": "^0.5.0",
     "object-hash": "^0.3.0",
-    "shashin": "0.0.5",
+    "shashin": "0.0.6",
     "viewportsizes": "^0.1.2",
     "vue": "^0.10.6",
     "wrappy": "^1.0.1"
